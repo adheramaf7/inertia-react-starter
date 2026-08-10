@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-react';
+import { BookOpen, FolderGit2, KeyIcon, LayoutGrid } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -21,6 +21,22 @@ const mainNavItems: NavItem[] = [
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+        isActive: true,
+    },
+    {
+        title: 'Access Management',
+        href: '#',
+        icon: KeyIcon,
+        children: [
+            {
+                title: 'User',
+                href: '/users',
+            },
+            {
+                title: 'Role',
+                href: '/roles',
+            },
+        ],
     },
 ];
 
@@ -43,11 +59,14 @@ export function AppSidebar() {
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton size="lg" asChild>
-                            <Link href={dashboard()} prefetch>
-                                <AppLogo />
-                            </Link>
-                        </SidebarMenuButton>
+                        <SidebarMenuButton
+                            size="lg"
+                            render={
+                                <Link href={dashboard()} prefetch>
+                                    <AppLogo />
+                                </Link>
+                            }
+                        />
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>

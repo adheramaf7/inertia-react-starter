@@ -2,6 +2,8 @@
 
 @import 'tw-animate-css';
 
+@import "shadcn/tailwind.css";
+
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
@@ -185,7 +187,7 @@
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
 
-    --font-sans: var(--font-sans);
+    --font-sans: 'Inter Variable', sans-serif;
     --font-mono: var(--font-mono);
     --font-serif: var(--font-serif);
 
@@ -217,6 +219,10 @@
     --color-info: var(--info);
     --color-success-foreground: var(--success-foreground);
     --color-success: var(--success);
+    --font-heading: var(--font-sans);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 @layer base {
@@ -227,5 +233,8 @@
     body {
         @apply bg-background text-foreground;
         letter-spacing: var(--tracking-normal);
+    }
+  html {
+    @apply font-sans;
     }
 }

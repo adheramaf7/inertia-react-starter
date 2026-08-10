@@ -25,15 +25,15 @@ export function UserMenuContent({ user }: Props) {
     };
 
     return (
-        <>
+        <DropdownMenuGroup>
             <DropdownMenuLabel className="p-0 font-normal">
                 <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                     <UserInfo user={user} showEmail={true} />
                 </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-                <DropdownMenuItem asChild>
+            <DropdownMenuItem
+                render={
                     <Link
                         className="block w-full cursor-pointer"
                         href={edit()}
@@ -43,21 +43,23 @@ export function UserMenuContent({ user }: Props) {
                         <Settings className="mr-2" />
                         Settings
                     </Link>
-                </DropdownMenuItem>
-            </DropdownMenuGroup>
+                }
+            ></DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem asChild>
-                <Link
-                    className="block w-full cursor-pointer"
-                    href={logout()}
-                    as="button"
-                    onClick={handleLogout}
-                    data-test="logout-button"
-                >
-                    <LogOut className="mr-2" />
-                    Log out
-                </Link>
-            </DropdownMenuItem>
-        </>
+            <DropdownMenuItem
+                render={
+                    <Link
+                        className="block w-full cursor-pointer"
+                        href={logout()}
+                        as="button"
+                        onClick={handleLogout}
+                        data-test="logout-button"
+                    >
+                        <LogOut className="mr-2" />
+                        Log out
+                    </Link>
+                }
+            ></DropdownMenuItem>
+        </DropdownMenuGroup>
     );
 }
