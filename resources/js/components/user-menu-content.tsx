@@ -1,5 +1,13 @@
 import { Link, router } from '@inertiajs/react';
-import { LogOut, Settings } from 'lucide-react';
+import {
+    LogOut,
+    LucideIcon,
+    Monitor,
+    Moon,
+    PaletteIcon,
+    Settings,
+    Sun,
+} from 'lucide-react';
 import {
     DropdownMenuGroup,
     DropdownMenuItem,
@@ -11,10 +19,14 @@ import { useMobileNavigation } from '@/hooks/use-mobile-navigation';
 import { logout } from '@/routes';
 import { edit } from '@/routes/profile';
 import type { User } from '@/types';
+import { Appearance, useAppearance } from '@/hooks/use-appearance';
+import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import AppearanceToggleTab from './appearance-tabs';
 
 type Props = {
     user: User;
 };
+
 
 export function UserMenuContent({ user }: Props) {
     const cleanup = useMobileNavigation();
@@ -40,16 +52,24 @@ export function UserMenuContent({ user }: Props) {
                         prefetch
                         onClick={cleanup}
                     >
-                        <Settings className="mr-2" />
+                        <Settings />
                         Settings
                     </Link>
                 }
             ></DropdownMenuItem>
+            <DropdownMenuItem className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                    <PaletteIcon /> Theme
+                </div>
+                <div>
+                    <AppearanceToggleTab iconOnly size="small" />
+                </div>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
                 render={
                     <Link
-                        className="block w-full cursor-pointer"
+                        className="block w-full cursor-pointer text-destructive"
                         href={logout()}
                         as="button"
                         onClick={handleLogout}

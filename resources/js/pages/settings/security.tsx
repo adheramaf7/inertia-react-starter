@@ -114,6 +114,7 @@ export default function Security(props: Props) {
                                 <Button
                                     disabled={processing}
                                     data-test="update-password-button"
+                                    type="submit"
                                 >
                                     Save
                                 </Button>

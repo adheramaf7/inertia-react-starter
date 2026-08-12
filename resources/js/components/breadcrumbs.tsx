@@ -9,6 +9,8 @@ import {
     BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import type { BreadcrumbItem as BreadcrumbItemType } from '@/types';
+import { home } from '@/routes';
+import { HomeIcon } from 'lucide-react';
 
 export function Breadcrumbs({
     breadcrumbs,
@@ -20,6 +22,16 @@ export function Breadcrumbs({
             {breadcrumbs.length > 0 && (
                 <Breadcrumb>
                     <BreadcrumbList>
+                        <BreadcrumbItem>
+                            <BreadcrumbLink
+                                render={
+                                    <Link href={home()}>
+                                        <HomeIcon size={17} />
+                                    </Link>
+                                }
+                            />
+                        </BreadcrumbItem>
+                        <BreadcrumbSeparator />
                         {breadcrumbs.map((item, index) => {
                             const isLast = index === breadcrumbs.length - 1;
 

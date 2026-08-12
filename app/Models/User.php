@@ -3,9 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enums\SystemRole;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -41,6 +44,8 @@ class User extends Authenticatable implements PasskeyUser
     use Userstamps;
     use HasRoles;
 
+    protected $with = ['roles'];
+
     /**
      * Get the attributes that should be cast.
      *
@@ -53,5 +58,11 @@ class User extends Authenticatable implements PasskeyUser
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
         ];
+    }
+
+    function isSuperadmin():Attribute{
+        return Attribute::make(
+            get: fn() => $this->hasRole(SystemRole::Superadmin->value)
+        );
     }
 }

@@ -1,8 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Badge } from '@/components/reui/badge';
-import type { DataGridFeatures } from '@/components/reui/data-grid/data-grid';
+import type { DataGridFeatures } from '@/components/ui/data-grid/data-grid';
 import type { Column } from '@tanstack/react-table';
 
 import { cn } from '@/lib/utils';
@@ -15,6 +14,7 @@ import {
 } from '@/components/ui/popover';
 import { Separator } from '@/components/ui/separator';
 import { CirclePlusIcon, CheckIcon } from 'lucide-react';
+import { Badge } from '../badge';
 
 interface DataGridColumnFilterProps<TData extends object, TValue> {
     column?: Column<DataGridFeatures, TData, TValue>;
@@ -47,49 +47,48 @@ function DataGridColumnFilter<TData extends object, TValue>({
 
     return (
         <Popover>
-            <PopoverTrigger asChild>
-                <Button variant="outline" size="sm">
-                    <CirclePlusIcon className="size-4" />
-                    {title}
-                    {selectedValues?.size > 0 && (
-                        <>
-                            <Separator
-                                orientation="vertical"
-                                className="mx-2 h-4"
-                            />
-                            <Badge
-                                variant="secondary"
-                                className="px-1 font-normal lg:hidden"
-                            >
-                                {selectedValues.size}
-                            </Badge>
-                            <div className="hidden space-x-1 lg:flex">
-                                {selectedValues.size > 2 ? (
-                                    <Badge
-                                        variant="secondary"
-                                        className="px-1 font-normal"
-                                    >
-                                        {selectedValues.size} selected
-                                    </Badge>
-                                ) : (
-                                    options
-                                        .filter((option) =>
-                                            selectedValues.has(option.value),
-                                        )
-                                        .map((option) => (
-                                            <Badge
-                                                variant="secondary"
-                                                key={option.value}
-                                                className="px-1 font-normal"
-                                            >
-                                                {option.label}
-                                            </Badge>
-                                        ))
-                                )}
-                            </div>
-                        </>
-                    )}
-                </Button>
+            <PopoverTrigger render={<Button variant="outline" size="sm">
+                <CirclePlusIcon className="size-4" />
+                {title}
+                {selectedValues?.size > 0 && (
+                    <>
+                        <Separator
+                            orientation="vertical"
+                            className="mx-2 h-4"
+                        />
+                        <Badge
+                            variant="secondary"
+                            className="px-1 font-normal lg:hidden"
+                        >
+                            {selectedValues.size}
+                        </Badge>
+                        <div className="hidden space-x-1 lg:flex">
+                            {selectedValues.size > 2 ? (
+                                <Badge
+                                    variant="secondary"
+                                    className="px-1 font-normal"
+                                >
+                                    {selectedValues.size} selected
+                                </Badge>
+                            ) : (
+                                options
+                                    .filter((option) =>
+                                        selectedValues.has(option.value),
+                                    )
+                                    .map((option) => (
+                                        <Badge
+                                            variant="secondary"
+                                            key={option.value}
+                                            className="px-1 font-normal"
+                                        >
+                                            {option.label}
+                                        </Badge>
+                                    ))
+                            )}
+                        </div>
+                    </>
+                )}
+            </Button>}>
             </PopoverTrigger>
             <PopoverContent className="w-[200px] p-0" align="start">
                 <div className="p-2">

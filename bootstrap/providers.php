@@ -2,6 +2,7 @@
 
 return [
     App\Providers\AppServiceProvider::class,
-    App\Providers\BlueprintMacroProvider::class,
+    App\Providers\BlueprintMacroServiceProvider::class,
     App\Providers\FortifyServiceProvider::class,
+    App\Providers\TypeScriptTransformerServiceProvider::class,
 ];

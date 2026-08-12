@@ -5,10 +5,17 @@ import type { Appearance } from '@/hooks/use-appearance';
 import { useAppearance } from '@/hooks/use-appearance';
 import { cn } from '@/lib/utils';
 
+type Props = HTMLAttributes<HTMLDivElement> & {
+    iconOnly?: boolean;
+    size?: 'default' | 'small';
+};
+
 export default function AppearanceToggleTab({
     className = '',
+    iconOnly,
+    size = 'default',
     ...props
-}: HTMLAttributes<HTMLDivElement>) {
+}: Props) {
     const { appearance, updateAppearance } = useAppearance();
 
     const tabs: { value: Appearance; icon: LucideIcon; label: string }[] = [
@@ -30,14 +37,20 @@ export default function AppearanceToggleTab({
                     key={value}
                     onClick={() => updateAppearance(value)}
                     className={cn(
-                        'flex items-center rounded-md px-3.5 py-1.5 transition-colors',
+                        'flex items-center rounded-md transition-colors',
+                        size === 'default' && 'px-3.5 py-1.5',
+                        size === 'small' && 'p-1',
                         appearance === value
                             ? 'bg-white shadow-xs dark:bg-neutral-700 dark:text-neutral-100'
                             : 'text-neutral-500 hover:bg-neutral-200/60 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-700/60',
                     )}
                 >
-                    <Icon className="-ml-1 h-4 w-4" />
-                    <span className="ml-1.5 text-sm">{label}</span>
+                    <Icon
+                        className={cn('size-4', size === 'default' && '-ml-1')}
+                    />
+                    {!iconOnly && (
+                        <span className="ml-1.5 text-sm">{label}</span>
+                    )}
                 </button>
             ))}
         </div>

@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\ServiceProvider;
 
-class BlueprintMacroProvider extends ServiceProvider
+class BlueprintMacroServiceProvider extends ServiceProvider
 {
     /**
      * Register services.

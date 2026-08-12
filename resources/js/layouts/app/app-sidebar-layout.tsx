@@ -20,7 +20,9 @@ export default function AppSidebarLayout({
                     <AppSidebarHeader breadcrumbs={breadcrumbs} />
                 </div>
                 <ScrollArea className="min-h-0 flex-1 overflow-y-auto">
-                    <div className="flex h-full flex-col p-2">{children}</div>
+                    <div className="container mx-auto flex h-full flex-col p-2 pt-4 lg:p-4 lg:pt-6">
+                        {children}
+                    </div>
                 </ScrollArea>
             </AppContent>
         </AppShell>

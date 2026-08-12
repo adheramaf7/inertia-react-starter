@@ -3,8 +3,8 @@ import type { HTMLAttributes, ReactNode } from "react"
 import {
   getColumnHeaderLabel,
   useDataGrid,
-} from "@/components/reui/data-grid/data-grid"
-import type { DataGridFeatures } from "@/components/reui/data-grid/data-grid"
+} from "@/components/ui/data-grid/data-grid"
+import type { DataGridFeatures } from "@/components/ui/data-grid/data-grid"
 import { Subscribe } from "@tanstack/react-table"
 import type { Column } from "@tanstack/react-table"
 
@@ -87,7 +87,7 @@ function DataGridColumnHeaderInner<TData extends object, TValue>({
   )
 
   const headerButtonClassName = cn(
-    "text-secondary-foreground/80 hover:bg-secondary data-[state=open]:bg-secondary hover:text-foreground data-[state=open]:text-foreground px-2 font-normal h-6 rounded-lg",
+    "data-[state=open]:bg-secondary hover:text-foreground data-[state=open]:text-foreground px-2 font-normal h-6 rounded-lg",
     className
   )
 
