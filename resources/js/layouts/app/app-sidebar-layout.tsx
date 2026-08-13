@@ -3,17 +3,19 @@ import { AppShell } from '@/components/app-shell';
 import { AppSidebar } from '@/components/app-sidebar';
 import { AppSidebarHeader } from '@/components/app-sidebar-header';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import type { AppLayoutProps } from '@/types';
+import type { AppLayoutProps, AppVariant } from '@/types';
+
+const variant: AppVariant = 'sidebar';
 
 export default function AppSidebarLayout({
     children,
     breadcrumbs = [],
 }: AppLayoutProps) {
     return (
-        <AppShell variant="sidebar">
+        <AppShell variant={variant}>
             <AppSidebar />
             <AppContent
-                variant="sidebar"
+                variant={variant}
                 className="flex h-svh flex-col overflow-hidden md:h-[calc(100svh-(--spacing(4)))]"
             >
                 <div className="sticky top-0 z-10 bg-background">

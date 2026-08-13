@@ -79,6 +79,16 @@ function CardContent({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+function CardTable({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-table"
+      className={cn("flex flex-col border p-0", className)}
+      {...props}
+    />
+  )
+}
+
 function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -93,11 +103,12 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardAction,
-  CardDescription,
-  CardContent,
+    Card,
+    CardHeader,
+    CardFooter,
+    CardTitle,
+    CardAction,
+    CardDescription,
+    CardContent,
+    CardTable,
 }

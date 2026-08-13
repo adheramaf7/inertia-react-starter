@@ -18,6 +18,8 @@ class RolePermissionSeeder extends Seeder
     {
         app(PermissionRegistrar::class)->forgetCachedPermissions();
 
+        $this->seedPermissions();
+
         Role::updateOrCreate(['name' => SystemRole::Superadmin]);
 
         app(PermissionRegistrar::class)->forgetCachedPermissions();

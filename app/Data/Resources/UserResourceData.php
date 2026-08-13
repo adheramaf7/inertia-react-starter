@@ -3,7 +3,6 @@
 namespace App\Data\Resources;
 
 use Carbon\CarbonImmutable;
-use DateTime;
 use Spatie\LaravelData\Attributes\MapInputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;

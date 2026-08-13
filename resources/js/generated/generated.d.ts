@@ -1,9 +1,18 @@
 declare namespace App {
     namespace Data {
         namespace Resources {
+            export type PermissionResourceData = {
+                id: number;
+                name: string;
+                label?: string;
+                group?: string;
+                description?: string;
+            };
             export type RoleResourceData = {
                 id: number;
                 name: string;
+                usersCount?: number;
+                permissions?: App.Data.Resources.PermissionResourceData[];
             };
             export type UserResourceData = {
                 id: number;

@@ -4,19 +4,17 @@ namespace App\Data\Resources;
 
 use Spatie\LaravelData\Attributes\MapInputName;
 use Spatie\LaravelData\Data;
-use Spatie\LaravelData\DataCollection;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 use Spatie\LaravelData\Optional;
 
 #[MapInputName(SnakeCaseMapper::class)]
-class RoleResourceData extends Data
+class PermissionResourceData extends Data
 {
     public function __construct(
         public int $id,
         public string $name,
-        public Optional|int $usersCount,
-
-        /** @var DataCollection<PermissionResourceData>|Optional */
-        public DataCollection|Optional $permissions,
+        public Optional|string $label,
+        public Optional|string $group,
+        public Optional|string $description
     ) {}
 }
